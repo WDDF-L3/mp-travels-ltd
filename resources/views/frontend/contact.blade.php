@@ -13,7 +13,6 @@
 <!-- Contact Section -->
 <section class="contact-page-section">
     <div class="container">
-
         <div class="contact-heading text-center">
             <h2>Get in touch</h2>
             <p>
