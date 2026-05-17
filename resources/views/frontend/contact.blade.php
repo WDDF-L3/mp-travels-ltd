@@ -6,7 +6,7 @@
 <section class="contact-banner">
     <div class="container text-center">
         <h1>Contact Us</h1>
-        <p>Home » Contact Us</p>
+        <p><a href="{{ route('home') }}">Home</a> » Contact Us</p>
     </div>
 </section>
 
