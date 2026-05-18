@@ -33,6 +33,35 @@ class JobController extends Controller
 
         Job::create($data);
 
-        return redirect()->route('admin.jobs.index')->with('success', 'Job posted successfully.');
+        return redirect()->route('admin.jobs.index')->with('success', 'Job created successfully.');
+    }
+
+    public function edit(Job $job)
+    {
+        return view('admin.jobs.edit', compact('job'));
+    }
+
+    public function update(Request $request, Job $job)
+    {
+        $data = $request->validate([
+            'title' => 'required|string|max:255',
+            'location' => 'required|string|max:255',
+            'description' => 'required|string',
+            'requirements' => 'nullable|string',
+            'status' => 'nullable',
+        ]);
+
+        $data['status'] = $request->has('status');
+
+        $job->update($data);
+
+        return redirect()->route('admin.jobs.index')->with('success', 'Job updated successfully.');
+    }
+
+    public function destroy(Job $job)
+    {
+        $job->delete();
+
+        return back()->with('success', 'Job deleted successfully.');
     }
 }
