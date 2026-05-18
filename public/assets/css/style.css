@@ -150,6 +150,7 @@ body {
     display: flex;
     align-items: center;
     margin-left: auto;
+    margin-left: 25px;
 }
 
 .side-contact-number {
@@ -180,11 +181,12 @@ body {
     background: #008dff;
     color: #fff !important;
     border-radius: 0;
-    padding: 10px 10px;
+    padding: 10px 5px;
     font-size: 14px;
     font-weight: 700;
     border: none;
     white-space: nowrap;
+    text-decoration: none;
 }
 
 .samaira-btn:hover {
@@ -369,6 +371,9 @@ body {
 
 
 /* carousel start here */
+/* .carousel {
+    margin-top: 95px;
+} */
 .carousel-item {
     height: 100vh;
     min-height: 600px;
@@ -378,15 +383,15 @@ body {
 }
 
 .slider-1 {
-    background-image: url(../../image/banner2.jpg);
+    background-image: url('/image/banner2.jpg');
 }
 
 .slider-2 {
-    background-image: url(../../image/banner1.jpg);
+    background-image: url('/image/banner1.jpg');
 }
 
 .slider-3 {
-    background-image: url(../../image/banner3.jpg);
+    background-image: url('/image/banner3.jpg');
 }
 
 .slider-caption-box {
@@ -587,7 +592,7 @@ body {
 .counter-wrap {
     background:
         linear-gradient(90deg, rgba(30, 49, 77, 0.75), rgba(30, 49, 77, 0.75)),
-        url("../../image/bg-image-02.jpg") center center/cover no-repeat;
+        url("/image/bg-image-02.jpg") center center/cover no-repeat;
     background-attachment: fixed;
     /* background: linear-gradient(90deg, var(--blue), #0c4793); */
     color: #fff;
@@ -600,7 +605,7 @@ body {
 }
 
 .md-section {
-    background: url(../../image/bg-image-01.jpg) center/cover;
+    background: url("/image/bg-image-01.jpg") center/cover;
 }
 
 .video-section {
@@ -728,6 +733,7 @@ body {
 }
 
 .card-service:hover,
+.article-card:hover,
 .info-card:hover {
     transform: translateY(-8px);
 }
@@ -931,7 +937,7 @@ footer a:hover {
 }
 
 .article-card:hover {
-    /* transform: translateY(-5px); */
+    transform: translateY(-5px);
     box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
 }
 
@@ -1144,7 +1150,7 @@ footer a:hover {
 .member-section {
     padding: 20px 0;
     margin-bottom: 80px;
-    background: url("../../image/bg-texture.jpg");
+    background: url("/image/bg-texture.jpg");
     background-size: cover;
     background-position: center;
     overflow: hidden;
@@ -1174,14 +1180,14 @@ footer a:hover {
 }
 
 .member-logo {
-    /* height: 180px; */
+    height: 180px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .member-logo img {
-    /* max-width: 220px; */
+    max-width: 200px;
     width: 100%;
     object-fit: contain;
     transition: 0.8s;
@@ -2432,239 +2438,3 @@ body.modal-open {
 }
 
 /* training facilites end here  */
-
-/* dashboard page start here */
-.admin-wrapper {
-    display: flex;
-    min-height: 100vh;
-    background: #f4f6f9;
-}
-
-.sidebar {
-    width: 260px;
-    background: #1d2b45;
-    padding: 30px 20px;
-}
-
-.sidebar h3 {
-    color: #fff;
-    margin-bottom: 35px;
-}
-
-.sidebar a {
-    display: block;
-    color: #fff;
-    text-decoration: none;
-    padding: 13px 15px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-}
-
-.sidebar a:hover {
-    background: #f15a24;
-}
-
-.admin-main {
-    flex: 1;
-    padding: 35px;
-}
-
-.dash-card {
-    background: #fff;
-    padding: 30px;
-    border-radius: 16px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
-}
-
-.dash-card h4 {
-    color: #777;
-}
-
-.dash-card h2 {
-    color: #f15a24;
-    font-size: 42px;
-}
-/* dashboard page end here */
-
-/* contact css start here   */
-.contact-banner {
-    background: #000;
-    padding: 78px 0;
-    color: #fff;
-    margin-top: 95px;
-}
-
-.contact-banner h1 {
-    font-size: 54px;
-    font-weight: 800;
-    margin-bottom: 14px;
-}
-
-.contact-banner p {
-    margin: 0;
-    font-size: 15px;
-    font-weight: 600;
-}
-
-.contact-page-section {
-    background: #fff;
-    padding: 105px 0 70px;
-}
-
-.contact-heading {
-    max-width: 850px;
-    margin: 0 auto 90px;
-}
-
-.contact-heading h2 {
-    font-size: 42px;
-    font-weight: 800;
-    color: #0b2b5b;
-    margin-bottom: 18px;
-}
-
-.contact-heading p {
-    color: #0d1c35;
-    line-height: 1.6;
-    margin: 0;
-}
-
-.contact-form label {
-    color: #0d1c35;
-    font-size: 15px;
-    margin-bottom: 9px;
-}
-
-.contact-form .form-control {
-    height: 42px;
-    border: 1px solid #d8dee6;
-    border-radius: 5px;
-    box-shadow: none;
-}
-
-.contact-form textarea.form-control {
-    height: 150px;
-    resize: vertical;
-}
-
-.contact-form .form-control:focus {
-    border-color: #f15a24;
-    box-shadow: 0 0 0 3px rgba(241, 90, 36, .08);
-}
-
-.contact-submit-btn {
-    width: 285px;
-    height: 42px;
-    border: 1px solid #00aeef;
-    background: #fff;
-    color: #00aeef;
-    border-radius: 5px;
-    transition: .3s;
-}
-
-.contact-submit-btn:hover {
-    background: #f15a24;
-    border-color: #f15a24;
-    color: #fff;
-}
-
-.contact-map iframe {
-    display: block;
-    width: 100%;
-    height: 420px;
-}
-
-.contact-info-row {
-    margin-top: 90px;
-    box-shadow: 0 0 25px rgba(0,0,0,.12);
-}
-
-.contact-info-card {
-    background: #fff;
-    min-height: 215px;
-    text-align: center;
-    padding: 55px 25px 35px;
-    box-shadow: 8px 0 20px rgba(0,0,0,.08);
-}
-
-.contact-info-card i {
-    color: #f15a24;
-    font-size: 34px;
-    margin-bottom: 14px;
-}
-
-.contact-info-card h4 {
-    display: inline-block;
-    color: #10213a;
-    font-size: 22px;
-    font-weight: 500;
-    margin-left: 8px;
-    margin-bottom: 10px;
-}
-.contact-info-card a {
-    display: block;
-    color: #0d1c35;
-    font-size: 15px;
-    text-decoration: none;
-}
-.contact-info-card a:hover {
-    color: #f15a24 !important;
-}
-
-.info-line {
-    width: 130px;
-    height: 2px;
-    background: #f15a24;
-    opacity: .35;
-    margin: 0 auto 18px;
-}
-
-.contact-info-card p {
-    color: #0d1c35;
-    font-size: 15px;
-    max-width: 280px;
-    margin: 0 auto;
-    line-height: 1.5;
-}
-
-@media (max-width: 991px) {
-    .contact-banner h1 {
-        font-size: 42px;
-    }
-
-    .contact-page-section {
-        padding: 70px 0 50px;
-    }
-
-    .contact-heading {
-        margin-bottom: 55px;
-    }
-
-    .contact-heading h2 {
-        font-size: 34px;
-    }
-
-    .contact-info-card {
-        box-shadow: none;
-        border: 1px solid #eee;
-    }
-}
-
-@media (max-width: 575px) {
-    .contact-banner {
-        padding: 55px 0;
-    }
-
-    .contact-banner h1 {
-        font-size: 34px;
-    }
-
-    .contact-submit-btn {
-        width: 100%;
-    }
-
-    .contact-map iframe {
-        height: 320px;
-    }
-}
-/* contact css end here   */

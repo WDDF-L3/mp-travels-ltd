@@ -23,9 +23,6 @@ class ContactController extends Controller
 
         ContactMessage::create($data);
 
-        return back()->with(
-            'success',
-            'Your message has been submitted successfully.'
-        );
+        return back()->with('success', 'Your message has been submitted successfully.');
     }
 }

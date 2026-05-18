@@ -1,5 +1,3 @@
-import '../../../resources/js/bootstrap';
-
 const slides = document.querySelectorAll('.hero-slide');
 let si = 0;
 if (slides.length) {
@@ -8,6 +6,7 @@ if (slides.length) {
         si = (si + 1) % slides.length; slides[si].classList.add('active')
     }, 4000)
 }
+
 const counters = document.querySelectorAll('.counter');
 let counted = false;
 function runCounters() {
@@ -37,39 +36,39 @@ function reveal() {
 }
 
 // member start here 
-document.addEventListener("DOMContentLoaded", function () {
+// document.addEventListener("DOMContentLoaded", function () {
 
-    new Swiper(".memberSlider", {
+//     new Swiper(".memberSlider", {
 
-        slidesPerView: 1,
-        spaceBetween: 30,
-        loop: true,
-        speed: 1200,
+//         slidesPerView: 1,
+//         spaceBetween: 30,
+//         loop: true,
+//         speed: 1200,
 
-        autoplay: {
-            delay: 2000,
-            disableOnInteraction: false,
-        },
+//         autoplay: {
+//             delay: 2000,
+//             disableOnInteraction: false,
+//         },
 
-        breakpoints: {
+//         breakpoints: {
 
-            576: {
-                slidesPerView: 2,
-            },
+//             576: {
+//                 slidesPerView: 2,
+//             },
 
-            768: {
-                slidesPerView: 3,
-            },
+//             768: {
+//                 slidesPerView: 3,
+//             },
 
-            1200: {
-                slidesPerView: 5,
-            }
+//             1200: {
+//                 slidesPerView: 5,
+//             }
 
-        }
+//         }
 
-    });
+//     });
 
-});
+// });
 
 // update date and time in footer
 function updateDateTime() {
@@ -91,15 +90,15 @@ setInterval(updateDateTime, 1000);
 
 // navbar start here 
 // Navbar Scroll Background
-window.addEventListener("scroll", function () {
-    const navbar = document.getElementById("navbar");
+// window.addEventListener("scroll", function () {
+//     const navbar = document.getElementById("navbar");
 
-    if (window.scrollY > 50) {
-        navbar.classList.add("scrolled");
-    } else {
-        navbar.classList.remove("scrolled");
-    }
-});
+//     if (window.scrollY > 50) {
+//         navbar.classList.add("scrolled");
+//     } else {
+//         navbar.classList.remove("scrolled");
+//     }
+// });
 
 // Close mobile menu when overlay clicked
 const overlay = document.querySelector(".mobile-overlay");

@@ -8,9 +8,7 @@ class FrontendJobController extends Controller
 {
     public function index()
     {
-        $jobs = Job::where('status', 1)
-            ->latest()
-            ->get();
+        $jobs = Job::where('status', 1)->latest()->get();
 
         return view('frontend.jobs', compact('jobs'));
     }

@@ -1,90 +1,54 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>MP Travels Ltd.</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
-    <link rel="icon" href="{{ asset('image/LOGO-ALL-03-1.png') }}" type="image/png">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-</head>
-
-<body>
-    <!-- nav start here -->
-    <nav class="navbar navbar-expand-lg fixed-top" id="navbar">
+ <nav class="navbar navbar-expand-lg fixed-top" id="navbar">
         <div class="container">
-            <!-- Logo -->
-            <a class="navbar-brand brand-logo" href="index.html">
-                <img src="image/LOGO-ALL-03-1.png" alt="logo">
+            <a class="navbar-brand" href="{{ route('home') }}">
+                <img src="{{ asset('image/LOGO-ALL-03-1.png') }}" alt="MP Travels" class="site-logo">
             </a>
-            <!-- Toggle Button -->
+
             <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
                 data-bs-target="#mainNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <!-- Mobile Overlay -->
-            <div class="mobile-overlay"></div>
-            <!-- Navbar Menu -->
+
             <div class="collapse navbar-collapse" id="mainNav">
-                <!-- Close Button Mobile -->
                 <div class="mobile-close d-lg-none">
                     <button class="btn-close-menu" data-bs-toggle="collapse" data-bs-target="#mainNav">
                         ✕ Close
                     </button>
                 </div>
-                <!-- Menu -->
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.html">Home</a>
+                        <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">HOME</a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="services.html">Services</a>
+                        <a class="nav-link" href="{{ url('/services') }}">SERVICES</a>
                     </li>
+
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="recruitmentDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Recruitment & Training
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                            RECRUITMENT & TRAINING
                         </a>
                         <ul class="dropdown-menu">
-                            <li>
-                                <a class="dropdown-item" href="recruitment-criteria.html">
-                                    Recruitment Criteria
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="recruitment-process.html">
-                                    Recruitment Process
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="recruitment-categories.html">
-                                    Recruitment Categories
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="training-facilities.html">
-                                    Training Facilities
-                                </a>
-                            </li>
+                            <li><a class="dropdown-item" href="{{ url('/recruitment-criteria') }}">Recruitment Criteria</a></li>
+                            <li><a class="dropdown-item" href="{{ url('/recruitment-process') }}">Recruitment Process</a></li>
+                            <li><a class="dropdown-item" href="{{ url('/recruitment-categories') }}">Recruitment Categories</a></li>
+                            <li><a class="dropdown-item" href="{{ url('/training-facilities') }}">Training Facilities</a></li>
                         </ul>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="jobs.html">Jobs</a>
+                        <a class="nav-link {{ request()->routeIs('jobs.*') ? 'active' : '' }}" href="{{ route('jobs.index') }}">JOBS</a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html">About Us</a>
+                        <a class="nav-link" href="{{ url('/about') }}">ABOUT US</a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact Us</a>
+                        <a class="nav-link {{ request()->routeIs('contact.*') ? 'active' : '' }}" href="{{ route('contact.index') }}">CONTACT US</a>
                     </li>
                 </ul>
-                <!-- Right Side -->
+
                 <div class="nav-right-side">
                     <div class="side-contact-number">
                         <div class="d-flex align-items-center">
@@ -99,11 +63,10 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="btn samaira-btn">
+                    <a href="https://samairagroup.com/" class="btn samaira-btn rounded-3" target="_blank">
                         SAMAIRA GROUP
                     </a>
                 </div>
             </div>
         </div>
     </nav>
-    <!-- nav end here  -->

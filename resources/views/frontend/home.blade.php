@@ -437,37 +437,37 @@
                     <!-- ITEM -->
                     <div class="swiper-slide">
                         <div class="member-logo">
-                            <img src="image/iata.png" alt="">
+                            <img src="{{ asset('image/iata.png') }}" alt="">
                         </div>
                     </div>
                     <!-- ITEM -->
                     <div class="swiper-slide">
                         <div class="member-logo">
-                            <img src="image/ab.png" alt="">
+                            <img src="{{ asset('image/ab.png') }}" alt="">
                         </div>
                     </div>
                     <!-- ITEM -->
                     <div class="swiper-slide">
                         <div class="member-logo">
-                            <img src="image/atab.png" alt="">
+                            <img src="{{ asset('image/atab.png') }}" alt="">
                         </div>
                     </div>
                     <!-- ITEM -->
                     <div class="swiper-slide">
                         <div class="member-logo">
-                            <img src="image/dcci.png" alt="">
+                            <img src="{{ asset('image/dcci.png') }}" alt="">
                         </div>
                     </div>
                     <!-- ITEM -->
                     <div class="swiper-slide">
                         <div class="member-logo">
-                            <img src="image/toab.png" alt="">
+                            <img src="{{ asset('image/toab.png') }}" alt="">
                         </div>
                     </div>
                     <!-- ITEM -->
                     <div class="swiper-slide">
                         <div class="member-logo">
-                            <img src="image/haab.png" alt="">
+                            <img src="{{ asset('image/haab.png') }}" alt="">
                         </div>
                     </div>
                 </div>
@@ -479,33 +479,86 @@
 @endsection
 
 @push('scripts')
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            new Swiper(".articleSlider", {
-                slidesPerView: 1,
-                spaceBetween: 25,
-                loop: true,
-                speed: 1000,
-                autoplay: {
-                    delay: 3000,
-                    disableOnInteraction: false,
+<script>
+    // navbar scroll fixed js start here
+    window.addEventListener("scroll", function () {
+    const navbar = document.getElementById("navbar");
+
+    if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+    } else {
+        navbar.classList.remove("scrolled");
+    }
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    /* Articles Slider */
+    if (document.querySelector(".articleSlider")) {
+        new Swiper(".articleSlider", {
+            slidesPerView: 1,
+            spaceBetween: 25,
+            loop: true,
+            speed: 800,
+
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+
+            pagination: {
+                el: ".articleSlider .swiper-pagination",
+                clickable: true,
+            },
+
+            navigation: {
+                nextEl: ".articleSlider .swiper-button-next",
+                prevEl: ".articleSlider .swiper-button-prev",
+            },
+
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
                 },
-                pagination: {
-                    el: ".articleSlider .swiper-pagination",
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: ".articleSlider .swiper-button-next",
-                    prevEl: ".articleSlider .swiper-button-prev",
-                },
-                breakpoints: {
-                    768: {
-                        slidesPerView: 2,
-                    },
-                    1200: {
-                        slidesPerView: 3,
-                    }
+                1200: {
+                    slidesPerView: 3,
                 }
-            });
+            }
         });
-    </script>
+    }
+
+
+    /* Member Slider */
+    if (document.querySelector(".memberSlider")) {
+        new Swiper(".memberSlider", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            speed: 1000,
+
+            autoplay: {
+                delay: 2000,
+                disableOnInteraction: false,
+            },
+
+            breakpoints: {
+                576: {
+                    slidesPerView: 2,
+                },
+                768: {
+                    slidesPerView: 3,
+                },
+                1200: {
+                    slidesPerView: 5,
+                }
+            }
+        });
+    }
+
+    // counter js start here
+    
+
+});
+</script>
+@endpush

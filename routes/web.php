@@ -9,8 +9,8 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\JobController;
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('frontend.home');
+})->name('home');
 
 Route::get('/jobs', [FrontendJobController::class, 'index'])->name('jobs.index');
 Route::get('/jobs/{job}', [FrontendJobController::class, 'show'])->name('jobs.show');
