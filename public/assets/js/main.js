@@ -1,3 +1,4 @@
+import '../../../resources/js/bootstrap';
 
 const slides = document.querySelectorAll('.hero-slide');
 let si = 0;

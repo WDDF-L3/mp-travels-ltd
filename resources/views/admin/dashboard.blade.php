@@ -1,3 +1,9 @@
+@extends('admin.layouts.app')
+
+@section('content')
+
+<h2 class="mb-4">Admin Dashboard</h2>
+
 <div class="admin-wrapper">
     <aside class="sidebar">
         <h3>MP Travels</h3>
@@ -35,3 +41,4 @@
         </div>
     </main>
 </div>
+@endsection
