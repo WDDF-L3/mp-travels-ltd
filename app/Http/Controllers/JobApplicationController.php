@@ -29,7 +29,7 @@ class JobApplicationController extends Controller
         $application = JobApplication::create($data);
 
         
-        // Mail::to($application->email)->send(new JobApplicationSubmitted($application));
+        Mail::to($application->email)->send(new JobApplicationSubmitted($application));
 
         return back()->with('success', 'Application submitted successfully.');
     }

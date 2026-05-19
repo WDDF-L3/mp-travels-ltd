@@ -49,7 +49,7 @@ use Illuminate\Support\Facades\Storage;
                                 <td>
                                     @if($application->resume)
                                         <a href="{{ Storage::url($application->resume) }}"
-                                        target="_blank" class="btn btn-sm btn-primary">
+                                        target="_blank" class="btn btn-sm btn-primary" download="{{ $application->name }}-resume">
                                             Download Resume
                                         </a>
                                     @else
