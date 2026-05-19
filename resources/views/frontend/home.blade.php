@@ -225,180 +225,75 @@
             </p>
             <div class="swiper articleSlider">
                 <div class="swiper-wrapper">
-                    <!-- Slide 1 -->
+                @forelse($articles as $article)
                     <div class="swiper-slide">
                         <div class="article-card">
                             <div class="article-top">
-                                <span><i class="fa-solid fa-user"></i> mptravels</span>
+                                <span>
+                                    <i class="fa-solid fa-user"></i> {{ $article->author }}
+                                </span>
                                 <div class="share-box">
                                     <a href="#" class="share-btn">
                                         <i class="fa-solid fa-share-nodes"></i>
                                     </a>
-
                                     <div class="share-popup">
-                                        <a href="https://facebook.com" target="_blank"><i
-                                                class="fa-brands fa-facebook-f"></i></a>
-                                        <a href="https://instagram.com" target="_blank"><i
-                                                class="fa-brands fa-instagram"></i></a>
-                                        <a href="https://pinterest.com" target="_blank"><i
-                                                class="fa-brands fa-pinterest-p"></i></a>
-                                        <a href="https://twitter.com" target="_blank"><i
-                                                class="fa-brands fa-x-twitter"></i></a>
-                                        <a href="https://mptravelsltd.com" target="_blank"><i
-                                                class="fa-solid fa-globe"></i></a>
+                                        @if($article->facebook)
+                                            <a href="{{ $article->facebook }}" target="_blank">
+                                                <i class="fa-brands fa-facebook-f"></i>
+                                            </a>
+                                        @endif
+                                        @if($article->instagram)
+                                            <a href="{{ $article->instagram }}" target="_blank">
+                                                <i class="fa-brands fa-instagram"></i>
+                                            </a>
+                                        @endif
+                                        @if($article->pinterest)
+                                            <a href="{{ $article->pinterest }}" target="_blank">
+                                                <i class="fa-brands fa-pinterest-p"></i>
+                                            </a>
+                                        @endif
+                                        @if($article->twitter)
+                                            <a href="{{ $article->twitter }}" target="_blank">
+                                                <i class="fa-brands fa-x-twitter"></i>
+                                            </a>
+                                        @endif
+                                        @if($article->website)
+                                            <a href="{{ $article->website }}" target="_blank">
+                                                <i class="fa-solid fa-globe"></i>
+                                            </a>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
                             <div class="article-meta">
-                                <a href="#">Uncategorized</a>
+                                <a href="#">{{ $article->category }}</a>
                                 <span>/</span>
-                                <a href="#">12 Aug 2025</a>
+                                <a href="#">{{ $article->created_at->format('d M Y') }}</a>
                             </div>
                             <h3>
-                                <a href="#">South Korea – Rising Demand for Foreign Workers in Manufacturing</a>
+                                <a href="{{ route('articles.show', $article->slug) }}">
+                                    {{ $article->title }}
+                                </a>
                             </h3>
                             <p>
-                                South Korea has become one of the fastest-growing destinations for overseas workers.
+                                {{ Str::limit($article->description, 120) }}
                             </p>
-                            <a class="read-more" href="#">CONTINUE READING</a>
+                            <a class="read-more" href="{{ route('articles.show', $article->slug) }}">
+                                CONTINUE READING
+                            </a>
                         </div>
                     </div>
-                    <!-- Slide 2 -->
+                @empty
                     <div class="swiper-slide">
                         <div class="article-card">
-                            <div class="article-top">
-                                <span><i class="fa-solid fa-user"></i> mptravels</span>
-
-                                <div class="comment-box">
-                                    <a href="#" class="comment-btn">
-                                        <i class="fa-regular fa-comment"></i>
-                                        <span class="comment-badge">0</span>
-                                    </a>
-                                </div>
-                                
-                                <div class="share-box">
-                                    <a href="#" class="share-btn">
-                                        <i class="fa-solid fa-share-nodes"></i>
-                                    </a>
-
-                                    <div class="share-popup">
-                                        <a href="https://facebook.com" target="_blank"><i
-                                                class="fa-brands fa-facebook-f"></i></a>
-                                        <a href="https://instagram.com" target="_blank"><i
-                                                class="fa-brands fa-instagram"></i></a>
-                                        <a href="https://pinterest.com" target="_blank"><i
-                                                class="fa-brands fa-pinterest-p"></i></a>
-                                        <a href="https://twitter.com" target="_blank"><i
-                                                class="fa-brands fa-x-twitter"></i></a>
-                                        <a href="https://mptravelsltd.com" target="_blank"><i
-                                                class="fa-solid fa-globe"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="article-meta">
-                                <a href="#">Uncategorized</a>
-                                <span>/</span>
-                                <a href="#">12 Aug 2025</a>
-                            </div>
-
-                            <h3>
-                                <a href="#">Japan – High Demand for Foreign Workers</a>
-                            </h3>
-
-                            <p>
-                                Japan has emerged as one of the most promising destinations for skilled sectors.
-                            </p>
-
-                            <a class="read-more" href="#">CONTINUE READING</a>
+                            <h3>No Articles Found</h3>
+                            <p>Please add articles from admin dashboard.</p>
                         </div>
                     </div>
-                    <!-- Slide 3 -->
-                    <div class="swiper-slide">
-                        <div class="article-card">
-                            <div class="article-top">
-                                <span><i class="fa-solid fa-user"></i> mptravels</span>
-                                <div class="share-box">
-                                    <a href="#" class="share-btn">
-                                        <i class="fa-solid fa-share-nodes"></i>
-                                    </a>
 
-                                    <div class="share-popup">
-                                        <a href="https://facebook.com" target="_blank"><i
-                                                class="fa-brands fa-facebook-f"></i></a>
-                                        <a href="https://instagram.com" target="_blank"><i
-                                                class="fa-brands fa-instagram"></i></a>
-                                        <a href="https://pinterest.com" target="_blank"><i
-                                                class="fa-brands fa-pinterest-p"></i></a>
-                                        <a href="https://twitter.com" target="_blank"><i
-                                                class="fa-brands fa-x-twitter"></i></a>
-                                        <a href="https://mptravelsltd.com" target="_blank"><i
-                                                class="fa-solid fa-globe"></i></a>
-                                    </div>
-                                </div>
-                            </div>
+                @endforelse
 
-                            <div class="article-meta">
-                                <a href="#">Uncategorized</a>
-                                <span>/</span>
-                                <a href="#">12 Aug 2025</a>
-                            </div>
-
-                            <h3>
-                                <a href="#">Oman – Need Foreign Workers</a>
-                            </h3>
-
-                            <p>
-                                Oman has become a stable and attractive destination for job seekers.
-                            </p>
-
-                            <a class="read-more" href="#">CONTINUE READING</a>
-                        </div>
-                    </div>
-                    <!-- Slide 4 -->
-                    <div class="swiper-slide">
-                        <div class="article-card">
-                            <div class="article-top">
-                                <span><i class="fa-solid fa-user"></i> mptravels</span>
-
-                                <div class="share-box">
-                                    <a href="#" class="share-btn">
-                                        <i class="fa-solid fa-share-nodes"></i>
-                                    </a>
-
-                                    <div class="share-popup">
-                                        <a href="https://facebook.com" target="_blank"><i
-                                                class="fa-brands fa-facebook-f"></i></a>
-                                        <a href="https://instagram.com" target="_blank"><i
-                                                class="fa-brands fa-instagram"></i></a>
-                                        <a href="https://pinterest.com" target="_blank"><i
-                                                class="fa-brands fa-pinterest-p"></i></a>
-                                        <a href="https://twitter.com" target="_blank"><i
-                                                class="fa-brands fa-x-twitter"></i></a>
-                                        <a href="https://mptravelsltd.com" target="_blank"><i
-                                                class="fa-solid fa-globe"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="article-meta">
-                                <a href="#">Uncategorized</a>
-                                <span>/</span>
-                                <a href="#">12 Aug 2025</a>
-                            </div>
-
-                            <h3>
-                                <a href="#">Qatar – Construction and Services</a>
-                            </h3>
-
-                            <p>
-                                Qatar is known for modern infrastructure and international job opportunities.
-                            </p>
-
-                            <a class="read-more" href="#">CONTINUE READING</a>
-                        </div>
-                    </div>
-                </div>
+            </div>
 
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-button-next"></div>

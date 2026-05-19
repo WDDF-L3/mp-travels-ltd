@@ -38,7 +38,7 @@
                 </p>
 
                 <div class="job-buttons">
-                    <button type="button" class="quick-apply-btn" data-job-id="{{ $job->id }}">
+                    <button type="button" class="quick-apply-btn btn btn-success" data-job-id="{{ $job->id }}">
                         QUICK APPLY
                     </button>
 
@@ -49,6 +49,9 @@
             <div class="alert alert-warning">No jobs found.</div>
         @endforelse
     </div>
+        <div class="mt-5">
+            {{ $jobs->links() }}
+        </div>
 </section>
 
 <div class="apply-modal" id="applyModal">

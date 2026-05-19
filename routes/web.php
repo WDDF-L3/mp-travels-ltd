@@ -7,9 +7,21 @@ use App\Http\Controllers\JobApplicationController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\JobController;
+use App\Http\Controllers\Admin\ArticleController;
+use App\Models\Article;
+use App\Models\Job;
+use App\Http\Controllers\ArticleFrontendController;
+
+// Route::get('/', function () {
+//     return view('frontend.home');
+// })->name('home');
 
 Route::get('/', function () {
-    return view('frontend.home');
+    $latestJobs = Job::where('status', 1)->latest()->take(5)->get();
+
+    $articles = Article::where('status', 1)->latest()->get();
+
+    return view('frontend.home', compact('latestJobs', 'articles'));
 })->name('home');
 
 Route::get('/jobs', [FrontendJobController::class, 'index'])->name('jobs.index');
@@ -18,6 +30,8 @@ Route::post('/jobs/{job}/apply', [JobApplicationController::class, 'store'])->na
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+Route::get('/articles/{slug}', [ArticleFrontendController::class, 'show'])
+    ->name('articles.show');
 
 Route::get('/dashboard', function () {
     return redirect()->route('admin.dashboard');
@@ -43,6 +57,7 @@ Route::prefix('admin')
 
         Route::delete('/contacts/{message}', [DashboardController::class, 'deleteContact'])
         ->name('contacts.delete');
+        Route::resource('/articles', ArticleController::class);
     });
 
 Route::view('/about', 'frontend.about')->name('about');

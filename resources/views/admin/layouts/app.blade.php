@@ -35,10 +35,15 @@
             <i class="fa-solid fa-user"></i> Profile
         </a>
 
+        <a href="{{ route('admin.articles.index') }}">
+            <i class="fa-solid fa-newspaper"></i> Articles
+        </a>
+
         <form method="POST" action="{{ route('logout') }}" class="mt-4">
             @csrf
-            <button type="submit" class="logout-btn">
-                <i class="fa-solid fa-right-from-bracket"></i> Logout
+            <button type="submit" class="btn btn-danger w-100">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
             </button>
         </form>
     </aside>

@@ -11,6 +11,7 @@ class JobController extends Controller
     public function index()
     {
         $jobs = Job::latest()->get();
+
         return view('admin.jobs.index', compact('jobs'));
     }
 
@@ -22,18 +23,23 @@ class JobController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'title' => 'required|string|max:255',
-            'location' => 'required|string|max:255',
-            'description' => 'required|string',
+            'title'        => 'required|string|max:255',
+            'location'     => 'required|string|max:255',
+            'description'  => 'required|string',
             'requirements' => 'nullable|string',
-            'status' => 'nullable',
+            'status'       => 'required|in:0,1',
         ]);
-
-        $data['status'] = $request->has('status');
 
         Job::create($data);
 
-        return redirect()->route('admin.jobs.index')->with('success', 'Job created successfully.');
+        return redirect()
+            ->route('admin.jobs.index')
+            ->with('success', 'Job created successfully.');
+    }
+
+    public function show(Job $job)
+    {
+        return redirect()->route('admin.jobs.edit', $job->id);
     }
 
     public function edit(Job $job)
@@ -44,24 +50,26 @@ class JobController extends Controller
     public function update(Request $request, Job $job)
     {
         $data = $request->validate([
-            'title' => 'required|string|max:255',
-            'location' => 'required|string|max:255',
-            'description' => 'required|string',
+            'title'        => 'required|string|max:255',
+            'location'     => 'required|string|max:255',
+            'description'  => 'required|string',
             'requirements' => 'nullable|string',
-            'status' => 'nullable',
+            'status'       => 'required|in:0,1',
         ]);
-
-        $data['status'] = $request->has('status');
 
         $job->update($data);
 
-        return redirect()->route('admin.jobs.index')->with('success', 'Job updated successfully.');
+        return redirect()
+            ->route('admin.jobs.index')
+            ->with('success', 'Job updated successfully.');
     }
 
     public function destroy(Job $job)
     {
         $job->delete();
 
-        return back()->with('success', 'Job deleted successfully.');
+        return redirect()
+            ->route('admin.jobs.index')
+            ->with('success', 'Job deleted successfully.');
     }
 }

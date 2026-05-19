@@ -15,7 +15,7 @@
     </aside> --}}
 
     <main class="admin-main">
-        <h2>Admin Dashboard</h2>
+        {{-- <h2>Admin Dashboard</h2> --}}
 
         <div class="row g-4">
             <div class="col-md-4">
