@@ -21,22 +21,16 @@ class JobApplicationController extends Controller
         ]);
 
         if ($request->hasFile('resume')) {
-
-            $data['resume'] = $request
-                ->file('resume')
-                ->store('resumes', 'public');
+            $data['resume'] = $request->file('resume')->store('resumes', 'public');
         }
 
         $data['job_id'] = $job->id;
 
         $application = JobApplication::create($data);
 
-        Mail::to($application->email)
-            ->send(new JobApplicationSubmitted($application));
+        
+        // Mail::to($application->email)->send(new JobApplicationSubmitted($application));
 
-        return back()->with(
-            'success',
-            'Application submitted successfully.'
-        );
+        return back()->with('success', 'Application submitted successfully.');
     }
 }

@@ -23,11 +23,11 @@
             <i class="fa-solid fa-briefcase"></i> Jobs
         </a>
 
-        <a href="#">
+        <a href="{{ route('admin.applications') }}">
             <i class="fa-solid fa-file-lines"></i> Applications
         </a>
 
-        <a href="#">
+        <a href="{{ route('admin.contacts') }}">
             <i class="fa-solid fa-envelope"></i> Contact Messages
         </a>
 

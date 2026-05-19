@@ -4,6 +4,6 @@
 
 <p>Your job application has been received successfully.</p>
 
-<p><strong>Job:</strong> {{ $application->job->title ?? '' }}</p>
+<p><strong>Job:</strong> {{ $application->job->title ?? 'N/A' }}</p>
 
 <p>Thank you,<br>MP Travels Ltd.</p>

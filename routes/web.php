@@ -34,7 +34,13 @@ Route::prefix('admin')
     ->middleware(['auth'])
     ->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/applications', [DashboardController::class, 'applications'])->name('applications');
+        Route::get('/contacts', [DashboardController::class, 'contacts'])->name('contacts');
         Route::resource('/jobs', JobController::class);
     });
+
+Route::get('/applications', [DashboardController::class, 'applications'])->name('applications');
+Route::get('/contacts', [DashboardController::class, 'contacts'])->name('contacts');
+
 
 require __DIR__.'/auth.php';
