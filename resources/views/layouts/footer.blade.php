@@ -18,12 +18,12 @@
                 </div>
                 <div class="col-lg-3">
                     <h4>Useful Links</h4>
-                    <p><a href="services.html">Our Services</a></p>
-                    <p><a href="about.html">About Us</a></p>
-                    <p><a href="jobs.html">Job Archives</a></p>
-                    <p><a href="recruitment-categories.html">Recruitment Categories</a></p>
-                    <p><a href="training-facilities.html">Training Facilities</a></p>
-                    <p><a href="contact.html">Contact Us</a></p>
+                    <a href="{{ route('services') }}">Our Services</a>
+                    <p><a href="{{ route('about') }}">About Us</a></p>
+                    <p><a href="{{ route('jobs.index') }}">Job Archives</a></p>
+                    <p><a href="{{ route('recruitment.categories') }}">Recruitment Categories</a></p>
+                    <p><a href="{{ route('training.facilities') }}">Training Facilities</a></p>
+                    <p><a href="{{ route('contact.index') }}">Contact Us</a></p>
                 </div>
                 <div class="col-lg-4">
                     <h4>Subscribe Now</h4>

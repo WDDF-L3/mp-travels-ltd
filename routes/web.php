@@ -45,6 +45,20 @@ Route::prefix('admin')
         ->name('contacts.delete');
     });
 
+Route::view('/about', 'frontend.about')->name('about');
 
+Route::view('/services', 'frontend.services')->name('services');
+
+Route::view('/recruitment-process', 'frontend.recruitment-process')
+    ->name('recruitment.process');
+
+Route::view('/recruitment-criteria', 'frontend.recruitment-criteria')
+    ->name('recruitment.criteria');
+
+Route::view('/recruitment-categories', 'frontend.recruitment-categories')
+    ->name('recruitment.categories');
+
+Route::view('/training-facilities', 'frontend.training-facilities')
+    ->name('training.facilities');
 
 require __DIR__.'/auth.php';

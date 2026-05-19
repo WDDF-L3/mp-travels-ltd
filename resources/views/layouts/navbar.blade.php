@@ -21,7 +21,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/services') }}">SERVICES</a>
+                        <a class="nav-link" href="{{ route('services') }}">SERVICES</a>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -29,10 +29,10 @@
                             RECRUITMENT & TRAINING
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ url('/recruitment-criteria') }}">Recruitment Criteria</a></li>
-                            <li><a class="dropdown-item" href="{{ url('/recruitment-process') }}">Recruitment Process</a></li>
-                            <li><a class="dropdown-item" href="{{ url('/recruitment-categories') }}">Recruitment Categories</a></li>
-                            <li><a class="dropdown-item" href="{{ url('/training-facilities') }}">Training Facilities</a></li>
+                            <li><a class="dropdown-item" href="{{ route('recruitment.criteria') }}">Recruitment Criteria</a></li>
+                            <li><a class="dropdown-item" href="{{ route('recruitment.process') }}">Recruitment Process</a></li>
+                            <li><a class="dropdown-item" href="{{ route('recruitment.categories') }}">Recruitment Categories</a></li>
+                            <li><a class="dropdown-item" href="{{ route('training.facilities') }}">Training Facilities</a></li>
                         </ul>
                     </li>
 
@@ -41,7 +41,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/about') }}">ABOUT US</a>
+                        <a class="nav-link" href="{{ route('about') }}">ABOUT US</a>
                     </li>
 
                     <li class="nav-item">

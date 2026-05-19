@@ -31,6 +31,10 @@
             <i class="fa-solid fa-envelope"></i> Contact Messages
         </a>
 
+        <a href="{{ route('profile.edit') }}">
+            <i class="fa-solid fa-user"></i> Profile
+        </a>
+
         <form method="POST" action="{{ route('logout') }}" class="mt-4">
             @csrf
             <button type="submit" class="logout-btn">
