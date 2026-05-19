@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Storage;
 
 <h2 class="mb-4">Job Applications</h2>
 
+@if(session('success'))
+    <div class="alert alert-success">{{ session('success') }}</div>
+@endif
+
 @forelse($jobs as $job)
 
     <div class="card border-0 shadow-sm mb-4">
@@ -20,19 +24,19 @@ use Illuminate\Support\Facades\Storage;
         </div>
 
         <div class="card-body table-responsive">
-
             @if($job->applications->count() > 0)
 
                 <table class="table table-bordered align-middle">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Applicant Name</th>
+                            <th>Applicant</th>
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Cover Letter</th>
                             <th>Resume</th>
-                            <th>Applied Date</th>
+                            <th>Date</th>
+                            <th width="100">Action</th>
                         </tr>
                     </thead>
 
@@ -43,40 +47,46 @@ use Illuminate\Support\Facades\Storage;
                                 <td>{{ $application->name }}</td>
                                 <td>{{ $application->email }}</td>
                                 <td>{{ $application->phone }}</td>
-                                <td style="max-width: 300px;">
-                                    {{ $application->cover_letter }}
-                                </td>
+                                <td style="max-width:300px;">{{ $application->cover_letter }}</td>
+
                                 <td>
                                     @if($application->resume)
-                                        <a href="{{ Storage::url($application->resume) }}"
-                                        target="_blank" class="btn btn-sm btn-primary" download="{{ $application->name }}-resume">
-                                            Download Resume
+                                        <a href="{{ route('admin.applications.resume', $application->id) }}"
+                                           class="btn btn-sm btn-primary">
+                                            Download
                                         </a>
                                     @else
                                         N/A
                                     @endif
                                 </td>
+
                                 <td>{{ $application->created_at->format('d M Y') }}</td>
+
+                                <td>
+                                    <form action="{{ route('admin.applications.delete', $application->id) }}"
+                                          method="POST"
+                                          onsubmit="return confirm('Delete this application?')">
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <button class="btn btn-sm btn-danger">
+                                            Delete
+                                        </button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
 
             @else
-
                 <p class="text-muted mb-0">No applications for this job yet.</p>
-
             @endif
-
         </div>
     </div>
 
 @empty
-
-    <div class="alert alert-warning">
-        No jobs found.
-    </div>
-
+    <div class="alert alert-warning">No jobs found.</div>
 @endforelse
 
 @endsection

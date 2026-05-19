@@ -37,6 +37,12 @@ Route::prefix('admin')
         Route::get('/applications', [DashboardController::class, 'applications'])->name('applications');
         Route::get('/contacts', [DashboardController::class, 'contacts'])->name('contacts');
         Route::resource('/jobs', JobController::class);
+        Route::get('/applications/{application}/resume', [DashboardController::class, 'downloadResume'])->name('applications.resume');
+
+        Route::delete('/applications/{application}', [DashboardController::class, 'deleteApplication'])->name('applications.delete');
+
+        Route::delete('/contacts/{message}', [DashboardController::class, 'deleteContact'])
+        ->name('contacts.delete');
     });
 
 
