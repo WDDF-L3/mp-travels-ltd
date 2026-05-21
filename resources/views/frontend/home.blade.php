@@ -116,7 +116,7 @@
                         country. Our license is approved by the Ministry of Labor and Employment, Government of
                         Bangladesh. Our government-approved Travel Agent and Recruiting Agent license number is RL-1128.
                     </p>
-                    <a class="btn btn-gold" href="about.html">Read more</a>
+                    <a class="btn btn-gold" href="{{ route('about') }}">Read more</a>
                 </div>
                 <div class="col-lg-6 reveal"><img class="img-fluid about-img" src="image/corporate-2-img-1.png"></div>
             </div>
@@ -375,18 +375,6 @@
 
 @push('scripts')
 <script>
-    // navbar scroll fixed js start here
-    window.addEventListener("scroll", function () {
-    const navbar = document.getElementById("navbar");
-
-    if (window.scrollY > 50) {
-        navbar.classList.add("scrolled");
-    } else {
-        navbar.classList.remove("scrolled");
-    }
-});
-
-
 document.addEventListener("DOMContentLoaded", function () {
 
     /* Articles Slider */
@@ -454,6 +442,54 @@ document.addEventListener("DOMContentLoaded", function () {
     // counter js start here
     
 
+});
+// counter number js start here
+document.addEventListener("DOMContentLoaded", function () {
+    const counters = document.querySelectorAll('.counter');
+    const counterBox = document.querySelector('.counter-wrap');
+    let counted = false;
+
+    function runCounters() {
+        if (counted || !counterBox) return;
+
+        const boxTop = counterBox.getBoundingClientRect().top;
+
+        if (boxTop > window.innerHeight - 80) return;
+
+        counted = true;
+
+        counters.forEach(function (el) {
+            const target = Number(el.getAttribute('data-target'));
+            let current = 0;
+            const increment = Math.max(1, Math.ceil(target / 90));
+
+            const timer = setInterval(function () {
+                current += increment;
+
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+
+                el.textContent = current.toLocaleString() + ' +';
+            }, 25);
+        });
+    }
+
+    function reveal() {
+        document.querySelectorAll('.reveal').forEach(function (el) {
+            if (el.getBoundingClientRect().top < window.innerHeight - 80) {
+                el.classList.add('show');
+            }
+        });
+
+        runCounters();
+    }
+
+    window.addEventListener('scroll', reveal);
+    window.addEventListener('load', reveal);
+
+    reveal();
 });
 </script>
 @endpush

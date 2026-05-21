@@ -7,68 +7,6 @@ if (slides.length) {
     }, 4000)
 }
 
-const counters = document.querySelectorAll('.counter');
-let counted = false;
-function runCounters() {
-    if (counted) return;
-    const box = document.querySelector('.counter-wrap');
-    if (!box || box.getBoundingClientRect().top > innerHeight)
-        return;
-    counted = true;
-    counters.forEach(el => {
-        const target = +el.dataset.target;
-        let n = 0;
-        const inc = Math.max(1, Math.ceil(target / 90));
-        const t = setInterval(() => {
-            n += inc;
-            if (n >= target) {
-                n = target;
-                clearInterval(t)
-            }
-            el.textContent = n.toLocaleString() + ' +'
-        }, 25)
-    })
-}
-function reveal() {
-    document.querySelectorAll('.reveal').forEach(e => {
-        if (e.getBoundingClientRect().top < innerHeight - 80) e.classList.add('show')
-    }); runCounters()
-}
-
-// member start here 
-// document.addEventListener("DOMContentLoaded", function () {
-
-//     new Swiper(".memberSlider", {
-
-//         slidesPerView: 1,
-//         spaceBetween: 30,
-//         loop: true,
-//         speed: 1200,
-
-//         autoplay: {
-//             delay: 2000,
-//             disableOnInteraction: false,
-//         },
-
-//         breakpoints: {
-
-//             576: {
-//                 slidesPerView: 2,
-//             },
-
-//             768: {
-//                 slidesPerView: 3,
-//             },
-
-//             1200: {
-//                 slidesPerView: 5,
-//             }
-
-//         }
-
-//     });
-
-// });
 
 // update date and time in footer
 function updateDateTime() {

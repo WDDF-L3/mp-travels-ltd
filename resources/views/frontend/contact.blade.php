@@ -75,19 +75,19 @@
                 <div class="row g-5 text-center">
                     <div class="col-md-4 shadow py-5">
                         
-                        <h5><i class="fa-solid fa-map-location contact-icon"></i> Visit our office</h5>
+                        <h5><i class="bi bi-crosshair2 contact-icon"></i> Visit our office</h5>
                         <hr class="contact-hr">
                         <p class="mt-3">4th floor, 49, Motijheel C/A Shapla Bhaban, Dhaka</p>
                     </div>
                     <div class="col-md-4 shadow py-5">
-                        
-                        <h5><i class="fa-solid fa-envelope-open contact-icon"></i> Mail Us</h5>
+
+                        <h5><i class="fa-solid fa-envelope-open contact-icon1"></i> Mail Us</h5>
                         <hr class="contact-hr">
                         <a href="mailto:mptravels@samairagroup.com" class="text-decoration-none text-black d-block mt-3">mptravels@samairagroup.com</a>
                     </div>
                     <div class="col-md-4 shadow py-5">
                         
-                        <h5><i class="fa-solid fa-phone-volume contact-icon"></i> Call Us</h5>
+                        <h5><i class="bi bi-telephone-plus contact-icon"></i> Call Us</h5>
                         <hr class="contact-hr">
                         <a href="tel: 01756221722" class="text-decoration-none text-black d-block mt-3">017-562-21722</a>
                     </div>

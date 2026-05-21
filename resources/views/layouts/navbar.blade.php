@@ -63,10 +63,25 @@
                             </div>
                         </div>
                     </div>
-                    <a href="https://samairagroup.com/" class="btn samaira-btn rounded-3" target="_blank">
+                    <a href="https://samairagroup.com/" class="btn samaira-btn" target="_blank">
                         SAMAIRA GROUP
                     </a>
                 </div>
             </div>
         </div>
     </nav>
+
+@push('scripts')
+    <script>
+        // navbar scroll fixed js start here
+    window.addEventListener("scroll", function () {
+    const navbar = document.getElementById("navbar");
+
+    if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+    } else {
+        navbar.classList.remove("scrolled");
+    }
+});
+    </script>
+@endpush
