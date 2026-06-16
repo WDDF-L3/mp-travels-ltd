@@ -24,11 +24,16 @@ class JobController extends Controller
     {
         $data = $request->validate([
             'title'        => 'required|string|max:255',
+            'image'        => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'location'     => 'required|string|max:255',
             'description'  => 'required|string',
             'requirements' => 'nullable|string',
             'status'       => 'required|in:0,1',
         ]);
+
+        if ($request->hasFile('image')) {
+        $data['image'] = $request->file('image')->store('jobs', 'public');
+        }
 
         Job::create($data);
 
@@ -51,11 +56,19 @@ class JobController extends Controller
     {
         $data = $request->validate([
             'title'        => 'required|string|max:255',
+            'image'        => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'location'     => 'required|string|max:255',
             'description'  => 'required|string',
             'requirements' => 'nullable|string',
             'status'       => 'required|in:0,1',
         ]);
+
+        if ($request->hasFile('image')) {
+        if ($job->image) {
+            \Illuminate\Support\Facades\Storage::disk('public')->delete($job->image);
+        }
+        $data['image'] = $request->file('image')->store('jobs', 'public');
+        }
 
         $job->update($data);
 

@@ -6,7 +6,7 @@
 
 <div class="card border-0 shadow-sm">
     <div class="card-body">
-        <form action="{{ route('admin.jobs.update', $job->id) }}" method="POST">
+        <form action="{{ route('admin.jobs.update', $job->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -15,6 +15,16 @@
                 <input type="text" name="title" class="form-control" value="{{ old('title', $job->title) }}">
             </div>
 
+            <div class="mb-3">
+                <label>Job Image / Logo</label>
+                <input type="file" name="image" class="form-control">
+                @if ($job->image)
+                    <div class="mt-2">
+                        <img src="{{ asset('storage/' . $job->image) }}" alt="Job Image" style="max-width: 150px;">
+                    </div>
+                @endif
+            </div>
+            
             <div class="mb-3">
                 <label>Location</label>
                 <input type="text" name="location" class="form-control" value="{{ old('location', $job->location) }}">

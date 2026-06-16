@@ -8,8 +8,12 @@
         <h2 class="job-details-title">{{ $job->title }}</h2>
 
         <div class="job-details-top">
-            <div class="job-icon">
-                <i class="fa-regular fa-building"></i>
+            <div class="col-md-4">
+                <div class="job-icon1">
+                @if($job->image)
+                    <img src="{{ asset('storage/' . $job->image) }}" alt="Job Image" style="object-fit: cover;" class="img-fluid">
+                @endif
+            </div>
             </div>
 
             <div class="job-date">

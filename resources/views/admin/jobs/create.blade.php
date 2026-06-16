@@ -6,13 +6,19 @@
 
 <div class="card border-0 shadow-sm">
     <div class="card-body">
-        <form action="{{ route('admin.jobs.store') }}" method="POST">
+        <form action="{{ route('admin.jobs.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div class="mb-3">
                 <label>Job Title</label>
                 <input type="text" name="title" class="form-control" value="{{ old('title') }}">
                 @error('title') <small class="text-danger">{{ $message }}</small> @enderror
+            </div>
+
+            <div class="mb-3">
+                <label>Job Image / Logo</label>
+                <input type="file" name="image" class="form-control">
+                @error('image') <small class="text-danger">{{ $message }}</small> @enderror
             </div>
 
             <div class="mb-3">

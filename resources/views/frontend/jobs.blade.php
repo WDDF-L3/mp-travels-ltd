@@ -19,9 +19,13 @@
             <div class="job-card">
                 <div class="job-top">
                     <div class="job-left">
-                        <div class="job-icon">
-                            <i class="fa-regular fa-building"></i>
-                        </div>
+                        
+                            <div class="job-icon">
+                                @if($job->image)
+                                    <img src="{{ asset('storage/' . $job->image) }}" alt="Job Image" style="object-fit: cover;" class="img-fluid">
+                                @endif
+                            </div>
+                        
                         <h3>{{ $job->title }}</h3>
                     </div>
 
@@ -42,7 +46,7 @@
                         QUICK APPLY
                     </button>
 
-                    <a href="{{ route('jobs.show', $job->id) }}">READ MORE</a>
+                    <a href="{{ route('jobs.show', $job->id) }}" class="rounded-2">READ MORE</a>
                 </div>
             </div>
         @empty
