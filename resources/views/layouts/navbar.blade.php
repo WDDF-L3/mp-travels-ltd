@@ -53,7 +53,7 @@
                     <div class="side-contact-number">
                         <div class="d-flex align-items-center">
                             <a href="tel:01756221722" class="me-2 text-decoration-none">
-                                <img src="image/phone-150x150.png" alt="phone" class="phone-icon">
+                                <img src="{{ asset('image/phone-150x150.png') }}" alt="phone" class="phone-icon">
                             </a>
                             <div class="contact-info">
                                 <a href="tel:01756221722">

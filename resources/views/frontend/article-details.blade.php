@@ -17,13 +17,19 @@
             <div class="col-lg-8">
                 <div class="article-details-card">
 
+                    <h2>{{ $article->title }}</h2>
+
+                    <div class="article-details-image">
+                        <img src="{{ asset('uploads/articles/' . $article->image) }}" alt="{{ $article->title }}" class="img-fluid">
+                    </div>
+
                     <div class="article-details-meta">
                         <span><i class="fa-solid fa-user"></i> {{ $article->author }}</span>
                         <span><i class="fa-solid fa-folder"></i> {{ $article->category }}</span>
                         <span><i class="fa-solid fa-calendar-days"></i> {{ $article->created_at->format('d M Y') }}</span>
                     </div>
 
-                    <h2>{{ $article->title }}</h2>
+                    
 
                     <p>
                         {!! nl2br(e($article->description)) !!}

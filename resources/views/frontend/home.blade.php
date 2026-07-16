@@ -265,16 +265,23 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="article-meta">
-                                <a href="#">{{ $article->category }}</a>
-                                <span>/</span>
-                                <a href="#">{{ $article->created_at->format('d M Y') }}</a>
-                            </div>
+
                             <h3>
                                 <a href="{{ route('articles.show', $article->slug) }}">
                                     {{ $article->title }}
                                 </a>
                             </h3>
+
+                           <div>
+                            <img src="" alt="">
+                           </div>
+
+                            <div class="article-meta">
+                                <a href="#">{{ $article->category }}</a>
+                                <span>/</span>
+                                <a href="#">{{ $article->created_at->format('d M Y') }}</a>
+                            </div>
+                            
                             <p>
                                 {{ Str::limit($article->description, 120) }}
                             </p>

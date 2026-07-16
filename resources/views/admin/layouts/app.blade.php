@@ -30,13 +30,13 @@
         <a href="{{ route('admin.contacts') }}">
             <i class="fa-solid fa-envelope"></i> Contact Messages
         </a>
+        
+        <a href="{{ route('admin.articles.index') }}">
+            <i class="fa-solid fa-newspaper"></i> Articles
+        </a>
 
         <a href="{{ route('profile.edit') }}">
             <i class="fa-solid fa-user"></i> Profile
-        </a>
-
-        <a href="{{ route('admin.articles.index') }}">
-            <i class="fa-solid fa-newspaper"></i> Articles
         </a>
 
         <form method="POST" action="{{ route('logout') }}" class="mt-4">

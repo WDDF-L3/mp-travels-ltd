@@ -26,6 +26,14 @@
             </div>
 
             <div class="mb-3">
+                <label>Image</label>
+                <input type="file" name="image" class="form-control">
+                @if($article->image)
+                    <img src="{{ asset('uploads/articles/' . $article->image) }}" alt="{{ $article->title }}" class="img-fluid mt-2" style="max-width: 200px;">
+                @endif
+            </div>
+
+            <div class="mb-3">
                 <label>Description</label>
                 <textarea name="description" rows="5" class="form-control" required></textarea>
             </div>

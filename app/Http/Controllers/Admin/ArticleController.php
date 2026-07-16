@@ -52,6 +52,7 @@ class ArticleController extends Controller
             'category' => 'nullable|string|max:255',
             'author' => 'nullable|string|max:255',
             'title' => 'required|string|max:255',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'description' => 'required|string',
             'facebook' => 'nullable|url',
             'instagram' => 'nullable|url',

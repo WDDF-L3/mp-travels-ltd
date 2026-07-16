@@ -16,6 +16,7 @@ return new class extends Migration
         $table->string('category')->default('Uncategorized');
         $table->string('author')->default('mptravels');
         $table->string('title');
+        $table->string('image');
         $table->text('description');
         $table->string('facebook')->nullable();
         $table->string('instagram')->nullable();
