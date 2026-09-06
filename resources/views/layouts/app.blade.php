@@ -16,10 +16,8 @@
     @stack('styles')
 </head>
 <body>
-    <body>
-
-    {{-- Google Translate --}}
-    <div id="google_translate_element" style="display: none;"></div>
+    
+<div id="google_translate_element" style="display: none;"></div>
 
 @include('layouts.navbar')
 

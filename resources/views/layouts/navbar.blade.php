@@ -68,7 +68,7 @@
                                 <a class="dropdown-item language-option"
                                 href="#"
                                 data-lang="en">
-                                    EN English
+                                    en English
                                 </a>
                             </li>
 
@@ -76,7 +76,7 @@
                                 <a class="dropdown-item language-option"
                                 href="#"
                                 data-lang="bn">
-                                    🇧🇩 বাংলা
+                                    bd বাংলা
                                 </a>
                             </li>
 
@@ -84,7 +84,7 @@
                                 <a class="dropdown-item language-option"
                                 href="#"
                                 data-lang="ja">
-                                    🇯🇵 日本語
+                                    jp 日本語
                                 </a>
                             </li>
 
