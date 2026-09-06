@@ -47,6 +47,49 @@
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('contact.*') ? 'active' : '' }}" href="{{ route('contact.index') }}">CONTACT US</a>
                     </li>
+
+                    {{-- Language Switcher --}}
+                    <li class="nav-item dropdown language-switcher">
+                        <a class="nav-link dropdown-toggle"
+                        href="#"
+                        id="languageDropdown"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+
+                            <i class="fa-solid fa-globe me-1"></i>
+                            <span id="current-language">Language</span>
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-end language-menu"
+                            aria-labelledby="languageDropdown">
+
+                            <li>
+                                <a class="dropdown-item language-option"
+                                href="#"
+                                data-lang="en">
+                                    EN English
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item language-option"
+                                href="#"
+                                data-lang="bn">
+                                    🇧🇩 বাংলা
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item language-option"
+                                href="#"
+                                data-lang="ja">
+                                    🇯🇵 日本語
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
                 </ul>
 
                 <div class="nav-right-side">
@@ -83,5 +126,144 @@
         navbar.classList.remove("scrolled");
     }
 });
-    </script>
+
+    const languageNames = {
+        en: 'English',
+        bn: 'বাংলা',
+        ja: '日本語'
+    };
+
+    /* FIX GOOGLE TRANSLATE POSITION */
+
+    function resetGoogleTranslatePosition() {
+        document.documentElement.style.top = '0px';
+        document.body.style.top = '0px';
+        document.body.style.marginTop = '0px';
+    }
+
+    /* GOOGLE TRANSLATE INITIALIZE */
+
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            includedLanguages: 'en,bn,ja',
+            autoDisplay: false
+        }, 'google_translate_element');
+
+        setTimeout(
+            resetGoogleTranslatePosition,
+            500
+        );
+        setTimeout(
+            resetGoogleTranslatePosition,
+            1000
+        );
+        setTimeout(
+            resetGoogleTranslatePosition,
+            2000
+        );
+
+        setTimeout(function () {
+            const savedLanguage =
+                localStorage.getItem(
+                    'mp_travels_language'
+                );
+            if (
+                savedLanguage &&
+                savedLanguage !== 'en'
+            ) {
+                changeLanguage(
+                    savedLanguage
+                );
+            }
+        }, 800);
+    }
+
+    /* CHANGE LANGUAGE */
+
+    function changeLanguage(lang) {
+        const googleSelect =
+            document.querySelector(
+                '.goog-te-combo'
+            );
+        if (!googleSelect) {
+            console.warn(
+                'Google Translate is not ready yet.'
+            );
+            return;
+        }
+
+        /* Google Translate-এর language change */
+        googleSelect.value = lang;
+        googleSelect.dispatchEvent(
+            new Event('change')
+        );
+
+        /* Language localStorage-এ save */
+        localStorage.setItem(
+            'mp_travels_language',
+            lang
+        );
+
+        /* Navbar-এর language name update */
+        const currentLanguage =
+            document.getElementById(
+                'current-language'
+            );
+        if (currentLanguage) {
+            currentLanguage.textContent =
+                languageNames[lang]
+                ?? 'English';
+        }
+        setTimeout(
+            resetGoogleTranslatePosition,
+            100
+        );
+        setTimeout(
+            resetGoogleTranslatePosition,
+            500
+        );
+    }
+    /* PAGE LOAD */
+    document.addEventListener(
+        'DOMContentLoaded',
+        function () {
+            const savedLanguage =
+                localStorage.getItem(
+                    'mp_travels_language'
+                );
+            const currentLanguage =
+                document.getElementById(
+                    'current-language'
+                );
+            if (
+                currentLanguage &&
+                savedLanguage
+            ) {
+                currentLanguage.textContent =
+                    languageNames[savedLanguage]
+                    ?? 'English';
+            }
+            /* Navbar language buttons */
+            document
+                .querySelectorAll(
+                    '.language-option'
+                )
+                .forEach(function (option) {
+                    option.addEventListener(
+                        'click',
+                        function (event) {
+                            event.preventDefault();
+                            const lang =
+                                this.dataset.lang;
+                            changeLanguage(
+                                lang
+                            );
+                        }
+                    );
+                });
+        }
+    );
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 @endpush

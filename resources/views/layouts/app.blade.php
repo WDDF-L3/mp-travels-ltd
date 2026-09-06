@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +16,10 @@
     @stack('styles')
 </head>
 <body>
+    <body>
+
+    {{-- Google Translate --}}
+    <div id="google_translate_element" style="display: none;"></div>
 
 @include('layouts.navbar')
 
