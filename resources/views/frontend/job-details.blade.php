@@ -10,10 +10,10 @@
         <div class="job-details-top">
             <div class="col-md-4">
                 <div class="job-icon1">
-                @if($job->image)
-                    <img src="{{ asset('storage/' . $job->image) }}" alt="Job Image" style="object-fit: cover;" class="img-fluid">
-                @endif
-            </div>
+                    @if($job->image)
+                        <img src="{{ asset('storage/' . $job->image) }}" alt="Job Image" style="object-fit: cover;" class="img-fluid w-100">
+                    @endif
+                </div>
             </div>
 
             <div class="job-date">
