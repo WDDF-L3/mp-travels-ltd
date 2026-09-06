@@ -7,7 +7,7 @@
 <div class="card border-0 shadow-sm">
     <div class="card-body">
 
-        <form action="{{ route('admin.articles.update', $article->id) }}" method="POST">
+        <form action="{{ route('admin.articles.update', $article->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -87,4 +87,4 @@
     </div>
 </div>
 
-@endsection
+@endsection 

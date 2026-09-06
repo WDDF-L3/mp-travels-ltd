@@ -26,6 +26,7 @@ class ArticleController extends Controller
             'category' => 'nullable|string|max:255',
             'author' => 'nullable|string|max:255',
             'title' => 'required|string|max:255',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'description' => 'required|string',
             'facebook' => 'nullable|url',
             'instagram' => 'nullable|url',
@@ -35,8 +36,14 @@ class ArticleController extends Controller
             'status' => 'required|in:0,1',
         ]);
         $data['slug'] = Str::slug($data['title']) . '-' . time();
+        
+        if ($request->hasFile('image')) {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('uploads/articles'), $imageName);
+            $data['image'] = $imageName;
+            }
+            
         Article::create($data);
-
         return redirect()->route('admin.articles.index')
             ->with('success', 'Article created successfully.');
     }
@@ -62,6 +69,19 @@ class ArticleController extends Controller
             'status' => 'required|in:0,1',
         ]);
         $data['slug'] = Str::slug($data['title']) . '-' . $article->id;
+
+        if ($request->hasFile('image')) {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('uploads/articles'), $imageName);
+            $data['image'] = $imageName;
+
+            if ($article->image && file_exists(public_path('uploads/articles/' . $article->image))) {
+                unlink(public_path('uploads/articles/' . $article->image));
+            }
+        } else {
+            unset($data['image']);
+        }
+
         $article->update($data);
 
         return redirect()->route('admin.articles.index')

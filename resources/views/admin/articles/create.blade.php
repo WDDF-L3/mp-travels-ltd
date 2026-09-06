@@ -7,8 +7,18 @@
 <div class="card border-0 shadow-sm">
     <div class="card-body">
 
-        <form action="{{ route('admin.articles.store') }}" method="POST">
+        <form action="{{ route('admin.articles.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
+
+            @if ($errors->any())
+                <div class="alert alert-danger mt-2">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
             <div class="mb-3">
                 <label>Category</label>
@@ -27,10 +37,7 @@
 
             <div class="mb-3">
                 <label>Image</label>
-                <input type="file" name="image" class="form-control">
-                @if($article->image)
-                    <img src="{{ asset('uploads/articles/' . $article->image) }}" alt="{{ $article->title }}" class="img-fluid mt-2" style="max-width: 200px;">
-                @endif
+                <input type="file" name="image" class="form-control" required>
             </div>
 
             <div class="mb-3">

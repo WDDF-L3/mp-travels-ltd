@@ -273,7 +273,7 @@
                             </h3>
 
                            <div>
-                            <img src="" alt="">
+                            <img src="{{ asset('uploads/articles/' . $article->image) }}" alt="{{ $article->title }}" class="img-fluid">
                            </div>
 
                             <div class="article-meta">
