@@ -1,7 +1,7 @@
  <nav class="navbar navbar-expand-lg fixed-top" id="navbar">
         <div class="container">
             <a class="navbar-brand" href="{{ route('home') }}">
-                <img src="{{ asset('image/LOGO-ALL-03-1.png') }}" alt="MP Travels" class="site-logo">
+                <img src="{{ asset('image/LOGO-ALL-03-1.png') }}" alt="MP Travels" class="brand-logo">
             </a>
 
             <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
@@ -57,8 +57,8 @@
                         data-bs-toggle="dropdown"
                         aria-expanded="false">
 
-                            <i class="fa-solid fa-globe me-1"></i>
-                            <span id="current-language">Language</span>
+                            <i class="bi bi-translate me-1"></i>
+                            <span id="current-language">LN</span>
                         </a>
 
                         <ul class="dropdown-menu dropdown-menu-end language-menu"
@@ -128,9 +128,9 @@
 });
 
     const languageNames = {
-        en: 'English',
-        bn: 'বাংলা',
-        ja: '日本語'
+        en: 'EN',
+        bn: 'BD',
+        ja: 'JP'
     };
 
     /* FIX GOOGLE TRANSLATE POSITION */

@@ -79,8 +79,10 @@ body {
    LOGO
 ========================= */
 
-.brand-logo img {
+.brand-logo {
     width: 140px;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 /* =========================
@@ -231,7 +233,7 @@ body {
         padding: 12px 0;
     }
 
-    .brand-logo img {
+    .brand-logo {
         width: 120px;
     }
 
@@ -348,7 +350,7 @@ body {
         left: -280px;
     }
 
-    .brand-logo img {
+    .brand-logo {
         width: 100px;
     }
 
