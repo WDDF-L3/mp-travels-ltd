@@ -25,10 +25,15 @@
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                            RECRUITMENT & TRAINING
+                        <a class="nav-link dropdown-toggle"
+                            href="#"
+                            id="recruitmentDropdown"
+                            role="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                                RECRUITMENT & TRAINING
                         </a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu" aria-labelledby="recruitmentDropdown">
                             <li><a class="dropdown-item" href="{{ route('recruitment.criteria') }}">Recruitment Criteria</a></li>
                             <li><a class="dropdown-item" href="{{ route('recruitment.process') }}">Recruitment Process</a></li>
                             <li><a class="dropdown-item" href="{{ route('recruitment.categories') }}">Recruitment Categories</a></li>
@@ -117,15 +122,15 @@
 @push('scripts')
     <script>
         // navbar scroll fixed js start here
-    window.addEventListener("scroll", function () {
-    const navbar = document.getElementById("navbar");
+        window.addEventListener("scroll", function () {
+        const navbar = document.getElementById("navbar");
 
-    if (window.scrollY > 50) {
-        navbar.classList.add("scrolled");
-    } else {
-        navbar.classList.remove("scrolled");
-    }
-});
+        if (window.scrollY > 50) {
+            navbar.classList.add("scrolled");
+        } else {
+            navbar.classList.remove("scrolled");
+        }
+    });
 
     const languageNames = {
         en: 'EN',
@@ -133,15 +138,11 @@
         ja: 'JP'
     };
 
-    /* FIX GOOGLE TRANSLATE POSITION */
-
     function resetGoogleTranslatePosition() {
         document.documentElement.style.top = '0px';
         document.body.style.top = '0px';
         document.body.style.marginTop = '0px';
     }
-
-    /* GOOGLE TRANSLATE INITIALIZE */
 
     function googleTranslateElementInit() {
         new google.translate.TranslateElement({
@@ -179,8 +180,6 @@
         }, 800);
     }
 
-    /* CHANGE LANGUAGE */
-
     function changeLanguage(lang) {
         const googleSelect =
             document.querySelector(
@@ -193,19 +192,16 @@
             return;
         }
 
-        /* Google Translate-এর language change */
         googleSelect.value = lang;
         googleSelect.dispatchEvent(
             new Event('change')
         );
 
-        /* Language localStorage-এ save */
         localStorage.setItem(
             'mp_travels_language',
             lang
         );
 
-        /* Navbar-এর language name update */
         const currentLanguage =
             document.getElementById(
                 'current-language'
@@ -244,7 +240,7 @@
                     languageNames[savedLanguage]
                     ?? 'English';
             }
-            /* Navbar language buttons */
+
             document
                 .querySelectorAll(
                     '.language-option'
