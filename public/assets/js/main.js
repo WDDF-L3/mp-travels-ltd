@@ -26,17 +26,6 @@ function updateDateTime() {
 updateDateTime();
 setInterval(updateDateTime, 1000);
 
-// navbar start here 
-// Navbar Scroll Background
-// window.addEventListener("scroll", function () {
-//     const navbar = document.getElementById("navbar");
-
-//     if (window.scrollY > 50) {
-//         navbar.classList.add("scrolled");
-//     } else {
-//         navbar.classList.remove("scrolled");
-//     }
-// });
 
 // Close mobile menu when overlay clicked
 const overlay = document.querySelector(".mobile-overlay");

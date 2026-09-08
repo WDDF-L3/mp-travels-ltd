@@ -63,17 +63,17 @@
                         aria-expanded="false">
 
                             <i class="bi bi-translate me-1"></i>
-                            <span id="current-language">LN</span>
+                            <span id="current-language">EN</span>
                         </a>
 
                         <ul class="dropdown-menu dropdown-menu-end language-menu"
                             aria-labelledby="languageDropdown">
 
                             <li>
-                                <a class="dropdown-item language-option"
+                               <a class="dropdown-item language-option"
                                 href="#"
                                 data-lang="en">
-                                    en English
+                                    🇬🇧 English
                                 </a>
                             </li>
 
@@ -81,7 +81,7 @@
                                 <a class="dropdown-item language-option"
                                 href="#"
                                 data-lang="bn">
-                                    bd বাংলা
+                                    🇧🇩 বাংলা
                                 </a>
                             </li>
 
@@ -89,7 +89,7 @@
                                 <a class="dropdown-item language-option"
                                 href="#"
                                 data-lang="ja">
-                                    jp 日本語
+                                    🇯🇵 日本語
                                 </a>
                             </li>
 
@@ -138,89 +138,133 @@
         ja: 'JP'
     };
 
-    function resetGoogleTranslatePosition() {
-        document.documentElement.style.top = '0px';
-        document.body.style.top = '0px';
-        document.body.style.marginTop = '0px';
-    }
-
     function googleTranslateElementInit() {
         new google.translate.TranslateElement({
             pageLanguage: 'en',
             includedLanguages: 'en,bn,ja',
-            autoDisplay: false
+            autoDisplay: false,
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
         }, 'google_translate_element');
-
-        setTimeout(
-            resetGoogleTranslatePosition,
-            500
-        );
-        setTimeout(
-            resetGoogleTranslatePosition,
-            1000
-        );
-        setTimeout(
-            resetGoogleTranslatePosition,
-            2000
-        );
 
         setTimeout(function () {
             const savedLanguage =
-                localStorage.getItem(
-                    'mp_travels_language'
-                );
-            if (
-                savedLanguage &&
-                savedLanguage !== 'en'
-            ) {
-                changeLanguage(
-                    savedLanguage
-                );
+                localStorage.getItem('mp_travels_language');
+            if (savedLanguage) {
+                updateCurrentLanguage(savedLanguage);
+                if (savedLanguage !== 'en') {
+                    changeLanguage(savedLanguage);
+                }
             }
-        }, 800);
+        }, 1000);
+
+        hideGoogleTranslateUI();
     }
+
+    function hideGoogleTranslateUI() {
+        document.querySelectorAll(
+            '.goog-te-banner-frame'
+        ).forEach(function (element) {
+            element.remove();
+        });
+
+        document.querySelectorAll(
+            'body > .skiptranslate'
+        ).forEach(function (element) {
+            element.remove();
+        });
+
+        document.querySelectorAll(
+            '.goog-tooltip'
+        ).forEach(function (element) {
+            element.style.display = 'none';
+        });
+
+        // Google text highlight
+        document.querySelectorAll(
+            '.goog-text-highlight'
+        ).forEach(function (element) {
+            element.style.background = 'transparent';
+        });
+
+        // Force page position
+        document.documentElement.style.top = '0';
+        document.documentElement.style.marginTop = '0';
+
+        document.body.style.top = '0';
+        document.body.style.marginTop = '0';
+
+        document.documentElement.classList.remove(
+            'translated-ltr',
+            'translated-rtl'
+        );
+    }
+
+    const googleTranslateObserver =
+        new MutationObserver(function () {
+            hideGoogleTranslateUI();
+        });
+
+    document.addEventListener(
+        'DOMContentLoaded',
+        function () {
+            googleTranslateObserver.observe(
+                document.body,
+                {
+                    childList: true,
+                    subtree: true,
+                    attributes: true,
+                    attributeFilter: ['style', 'class']
+                }
+            );
+        }
+    );
 
     function changeLanguage(lang) {
         const googleSelect =
-            document.querySelector(
-                '.goog-te-combo'
-            );
+            document.querySelector('.goog-te-combo');
         if (!googleSelect) {
             console.warn(
                 'Google Translate is not ready yet.'
             );
             return;
         }
-
         googleSelect.value = lang;
         googleSelect.dispatchEvent(
             new Event('change')
         );
 
+        // Save language
         localStorage.setItem(
             'mp_travels_language',
             lang
         );
 
+        updateCurrentLanguage(lang);
+        setTimeout(
+            hideGoogleTranslateUI,
+            100
+        );
+        setTimeout(
+            hideGoogleTranslateUI,
+            500
+        );
+        setTimeout(
+            hideGoogleTranslateUI,
+            1000
+        );
+    }
+
+    function updateCurrentLanguage(lang) {
         const currentLanguage =
             document.getElementById(
                 'current-language'
             );
-        if (currentLanguage) {
-            currentLanguage.textContent =
-                languageNames[lang]
-                ?? 'English';
-        }
-        setTimeout(
-            resetGoogleTranslatePosition,
-            100
-        );
-        setTimeout(
-            resetGoogleTranslatePosition,
-            500
-        );
+
+        if (!currentLanguage) return;
+        currentLanguage.textContent =
+            languageNames[lang] ?? 'EN';
     }
-    /* PAGE LOAD */
+
     document.addEventListener(
         'DOMContentLoaded',
         function () {
@@ -228,19 +272,11 @@
                 localStorage.getItem(
                     'mp_travels_language'
                 );
-            const currentLanguage =
-                document.getElementById(
-                    'current-language'
+            if (savedLanguage) {
+                updateCurrentLanguage(
+                    savedLanguage
                 );
-            if (
-                currentLanguage &&
-                savedLanguage
-            ) {
-                currentLanguage.textContent =
-                    languageNames[savedLanguage]
-                    ?? 'English';
             }
-
             document
                 .querySelectorAll(
                     '.language-option'
@@ -252,14 +288,18 @@
                             event.preventDefault();
                             const lang =
                                 this.dataset.lang;
-                            changeLanguage(
-                                lang
-                            );
+                            changeLanguage(lang);
                         }
                     );
                 });
+
+            // Initial cleanup
+            hideGoogleTranslateUI();
         }
     );
+
 </script>
-<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script
+    src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+</script>
 @endpush
